@@ -1,0 +1,21 @@
+h1 {
+    text-align: center;
+    margin: auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+h6 {
+    text-align: left;
+}
+
+.form-select {
+    margin: auto;
+    /* width: fit-content; */
+}
+
+.form-check {
+    text-align: left;
+    /* margin: auto; */
+    width: fit-content;
+}
