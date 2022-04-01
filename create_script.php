@@ -5,13 +5,21 @@ include "./dbconnect_script.php";
 echo "created";
 var_dump($_POST);
 
-// var_dump($_POST);
+// variables of post 
 $formaat = $_POST["formaat"];
 $saus = $_POST["saus"];
 $toppings = $_POST["toppings"];
-$kruiden = implode(", ",$_POST["Kruiden"]);
 
-echo $kruiden;
+// if the kruiden is not selected it gives geen, but if there is kruiden selected it will implode kruiden to string.
+if(!isset($_POST['Kruiden'])){    
+    $kruiden = 'geen';
+} else {
+    $kruiden = implode(", ",$_POST['Kruiden']);
+    
+}
+// prints out the post 
+print_r($kruiden);
+
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -27,7 +35,7 @@ try {
     $stmt->execute();
 } 
 catch(PDOException $e) {
-    echo $sql . "<br>" . $e->getMessage();
+    echo "<br>" . $e->getMessage();
 }
 
 header("Refresh:1; url=read.php");

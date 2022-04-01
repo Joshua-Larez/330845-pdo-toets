@@ -61,6 +61,11 @@
 
                 <h6>Kruiden</h6>
                 <div>
+                    <!-- <div class="form-check">
+                        <label class="form-check-label" for="Kruiden">geen</label>
+                        <input class="form-check-input" type="checkbox" name="Kruiden[]" value="geen" checked>
+                    </div> -->
+
                     <div class="form-check">
                         <label class="form-check-label" for="Kruiden">Peterselie</label>
                         <input class="form-check-input" type="checkbox" name="Kruiden[]" value="Peterselie" >
@@ -68,7 +73,7 @@
 
                     <div class="form-check">
                         <label class="form-check-label" for="Kruiden">Oregano</label>                        
-                        <input class="form-check-input" type="checkbox" name="Kruiden[]" value="Oregano" checked>
+                        <input class="form-check-input" type="checkbox" name="Kruiden[]" value="Oregano" >
                     </div>
 
                     <div class="form-check">

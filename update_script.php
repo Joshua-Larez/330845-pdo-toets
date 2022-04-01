@@ -70,14 +70,9 @@ if (isset($_POST['toppings'])) {
 }
 
 
-if (isset($_POST['Kruiden'])) {
+if (!isset($_POST['Kruiden'])) {
 
-        if (empty($_POST['Kruiden'])) {
-            echo "geen kruiden";
-        }
-        else {
-            $fix = $_POST['Kruiden'];
-        }
+    $kruiden = 'geen';
 
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -90,7 +85,30 @@ if (isset($_POST['Kruiden'])) {
         $stmt = $conn->prepare($sql);
 
         $stmt->bindParam(':id', $_POST['id']);
-        $stmt->bindParam(':kruiden', implode(", ",$fix));
+        $stmt->bindParam(':kruiden', $kruiden);
+
+        // execute the query
+        $stmt->execute();
+        // echo a message to say the UPDATE succeeded
+    } catch(PDOException $e) {
+        echo $sql . "<br>" . $e->getMessage();
+    }
+}
+else {
+    $kruiden = implode(", ",$_POST['Kruiden']);
+
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        // set the PDO error mode to exception
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $sql = "UPDATE `pizza` SET `kruiden` = :kruiden WHERE `pizza`.`id` = :id";
+
+        // Prepare statement
+        $stmt = $conn->prepare($sql);
+
+        $stmt->bindParam(':id', $_POST['id']);
+        $stmt->bindParam(':kruiden', $kruiden);
 
         // execute the query
         $stmt->execute();
@@ -100,10 +118,9 @@ if (isset($_POST['Kruiden'])) {
     }
 }
 
+// $conn = null;
 
-$conn = null;
-
-var_dump($_POST);
+// var_dump($_POST);
 
 header("Refresh:0.5; url=read.php");
 

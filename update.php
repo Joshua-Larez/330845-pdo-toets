@@ -85,7 +85,6 @@
             <h6>Kruiden</h6>
             <div>
 
-            
                 <div class="form-check">
                     <label class="form-check-label" for="Kruiden">Peterselie</label>
                     <input class="form-check-input" type="checkbox" name="Kruiden[]" value="Peterselie" <?= in_array("Peterselie",$kruiden) ? "checked" : "" ?> >
